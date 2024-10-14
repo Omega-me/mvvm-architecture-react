@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 import { useState } from 'react';
 
-export const useFarmersLandingViewModel = () => {
+export const useFarmersLandingVm = () => {
   const [name, setName] = useState('');
 
   const onChangeName = (name: string) => {
@@ -11,3 +12,5 @@ export const useFarmersLandingViewModel = () => {
     name,
   };
 };
+
+export interface IFarmersLandingVm extends ReturnType<typeof useFarmersLandingVm> {}

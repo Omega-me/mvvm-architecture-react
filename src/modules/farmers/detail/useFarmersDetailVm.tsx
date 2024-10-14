@@ -1,14 +1,16 @@
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 import { IPageParams } from '@/common/interfaces';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-interface IViewModelConfig {
+interface IVmConfig {
   pageParams: IPageParams;
 }
 
-export const useFarmersDetailViewModel = (config: IViewModelConfig) => {
+export const useFarmersDetailVm = (config: IVmConfig) => {
   const [route, setRoute] = useState('');
   const router = useRouter();
+
   const onChangeId = (id: string) => {
     setRoute(id);
   };
@@ -16,6 +18,7 @@ export const useFarmersDetailViewModel = (config: IViewModelConfig) => {
   const onGoToNewRoute = () => {
     router.push(route);
   };
+
   return {
     id: config.pageParams.params.id,
     onChangeId,
@@ -23,3 +26,5 @@ export const useFarmersDetailViewModel = (config: IViewModelConfig) => {
     onGoToNewRoute,
   };
 };
+
+export interface IFarmersDetailVm extends ReturnType<typeof useFarmersDetailVm> {}
